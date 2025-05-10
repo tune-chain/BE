@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RedisModule } from './utils/redis/redis.module';
+import { SearchModule } from './search/search.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { RedisModule } from './utils/redis/redis.module';
         synchronize: process.env.DB_SYNC === 'true',
     }),
     RedisModule,
+    SearchModule,
   ],
   controllers: [AppController],
   providers: [AppService],
