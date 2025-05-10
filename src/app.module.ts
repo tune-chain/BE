@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RedisModule } from './utils/redis/redis.module';
 import { SearchModule } from './search/search.module';
+import { AudioModule } from './audio/audio.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { SearchModule } from './search/search.module';
     }),
     RedisModule,
     SearchModule,
+    AudioModule
   ],
   controllers: [AppController],
   providers: [AppService],

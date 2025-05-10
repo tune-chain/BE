@@ -1,7 +1,6 @@
-import {Controller, Get, Query} from '@nestjs/common';
+import {Controller, Get} from '@nestjs/common';
 import { ApiOkResponse, ApiOperation } from '@nestjs/swagger';
 import { SearchService } from './search.service';
-import { SearchMusicBodyDto } from './dtos/search-music-body.dto';
 
 @Controller('search')
 export class SearchController {
@@ -16,9 +15,8 @@ export class SearchController {
     description: '성공 ',
   })
   @Get('/')
-  async searchMusic(
-    @Query() searchDto : SearchMusicBodyDto,){
-        const result = await this.searchService.searchMusic(searchDto);
+  async searchMusic(){
+        const result = await this.searchService.searchMusic();
         return result;
     }
 }
