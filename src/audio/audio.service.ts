@@ -7,7 +7,7 @@ import { SearchMusicBodyDto } from '../search/dtos/search-music-body.dto';
 
 @Injectable()
 export class AudioService{
-     async searchMusic(searchDto:SearchMusicBodyDto) {   
+     async getAudio(searchDto:SearchMusicBodyDto) {   
         const { artist, title } = searchDto;
         try {
             const keyword = `${artist ?? ''} ${title ?? ''} audio`.trim();
