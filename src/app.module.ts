@@ -4,6 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RedisModule } from './utils/redis/redis.module';
+import { SearchModule } from './search/search.module';
+import { SpotifyModule } from './utils/spotify/spotify.module';
+import { DeezerModule } from './utils/deezer/deezer.module';
 
 @Module({
   imports: [
@@ -21,6 +24,9 @@ import { RedisModule } from './utils/redis/redis.module';
         synchronize: process.env.DB_SYNC === 'true',
     }),
     RedisModule,
+    SpotifyModule,
+    DeezerModule,
+    SearchModule,
   ],
   controllers: [AppController],
   providers: [AppService],

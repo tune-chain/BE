@@ -22,6 +22,11 @@ export const BaseResponse = {
     /* 403 FORBIDDEN : 권한이 없는 사용자 */
 
     /* 404 NOT_FOUND : Resource 를 찾을 수 없음 */
+    MUSIC_NOT_FOUND: {
+        success: false,
+        code: 404,
+        message: '음악 검색에 실패',
+    },
 
     /* 409 CONFLICT : Resource 의 현재 상태와 충돌. 보통 중복된 데이터 존재 */
 
