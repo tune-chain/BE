@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 
-export class SearchMusicBodyDto {
+export class AudioIdRequestDto {
   @ApiProperty({ description: 'artist', example: 'weekend' })
   @IsOptional()
   @IsString()
