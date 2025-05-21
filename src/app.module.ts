@@ -6,7 +6,7 @@ import { AppService } from './app.service';
 import { RedisModule } from './utils/redis/redis.module';
 import { SearchModule } from './search/search.module';
 import { SpotifyModule } from './utils/spotify/spotify.module';
-import { DeezerModule } from './utils/deezer/deezer.module';
+
 
 @Module({
   imports: [
@@ -25,7 +25,6 @@ import { DeezerModule } from './utils/deezer/deezer.module';
     }),
     RedisModule,
     SpotifyModule,
-    DeezerModule,
     SearchModule,
   ],
   controllers: [AppController],
