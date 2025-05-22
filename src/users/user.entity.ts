@@ -1,3 +1,4 @@
+import { UserLike } from 'src/likes/user-like.entity';
 import {
     BaseEntity,
     Column,
@@ -6,6 +7,7 @@ import {
     DeleteDateColumn,
     Entity,
     PrimaryGeneratedColumn,
+    OneToMany,
   } from 'typeorm';
 
 @Entity('user')
@@ -25,4 +27,6 @@ export class User extends BaseEntity {
   @DeleteDateColumn({ name: 'deleted_at', nullable: true })
   deletedAt: Date;
 
+  @OneToMany(() => UserLike, (like) => like.user)
+  likedTracks: UserLike[];
 }
