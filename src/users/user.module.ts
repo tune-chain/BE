@@ -10,4 +10,4 @@ import { UserRepository } from './user.repository';
     controllers : [UserController],
     providers: [UserService,UserRepository],
 })
-export class WordModule{}
+export class UserModule{}

@@ -1,4 +1,4 @@
-import { Track } from "src/tracks/tracks.entity";
+import { Tracks } from "src/tracks/tracks.entity";
 import { User } from "src/users/user.entity";
 import { CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Unique } from "typeorm";
 
@@ -8,11 +8,11 @@ export class UserLike {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User, (user) => user.likedTracks, { onDelete: 'CASCADE' })
+  @ManyToOne(() => User, (user) => user.likedTracks, { onDelete: 'CASCADE', eager: true })
   user: User;
 
-  @ManyToOne(() => Track, (track) => track.likes, { onDelete: 'CASCADE' })
-  track: Track;
+  @ManyToOne(() => Tracks, (track) => track.likes, { onDelete: 'CASCADE', eager: true })
+  track: Tracks;
 
   @CreateDateColumn()
   likedAt: Date;

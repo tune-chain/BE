@@ -1,4 +1,4 @@
-import { UserLike } from 'src/likes/user-like.entity';
+import { UserLike } from 'src/user-like/user-like.entity';
 import {
     BaseEntity,
     Column,

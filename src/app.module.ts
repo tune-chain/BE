@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { RedisModule } from './utils/redis/redis.module';
 import { SearchModule } from './search/search.module';
 import { SpotifyModule } from './utils/spotify/spotify.module';
+import { TrackModule } from './tracks/track.module';
+import { UserLikeModule } from './user-like/user-like.module';
 
 
 @Module({
@@ -26,6 +28,8 @@ import { SpotifyModule } from './utils/spotify/spotify.module';
     RedisModule,
     SpotifyModule,
     SearchModule,
+    TrackModule,
+    UserLikeModule
   ],
   controllers: [AppController],
   providers: [AppService],
