@@ -3,7 +3,7 @@ import { User } from "src/users/user.entity";
 import { CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Unique } from "typeorm";
 
 @Entity()
-@Unique(['user', 'track']) // 동일한 사용자-트랙 조합 중복 방지
+@Unique(['user', 'track']) 
 export class UserLike {
   @PrimaryGeneratedColumn()
   id: number;
