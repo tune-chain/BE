@@ -16,4 +16,5 @@ export class UserLike {
 
   @CreateDateColumn()
   likedAt: Date;
+
 }

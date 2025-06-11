@@ -1,5 +1,4 @@
-import { Playlists } from 'src/playlists/playlists.entity';
-import { UserLike } from 'src/user-like/user-like.entity';
+import { User } from 'src/users/user.entity';
 import {
     BaseEntity,
     Column,
@@ -8,16 +7,22 @@ import {
     DeleteDateColumn,
     Entity,
     PrimaryGeneratedColumn,
-    OneToMany,
+    ManyToOne,
   } from 'typeorm';
 
-@Entity('user')
-export class User extends BaseEntity {
+@Entity('playlists')
+export class Playlists extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: 'varchar', length: 255})
-  walletAddress: string;
+  name : string;
+
+  @Column({ type: 'varchar', length: 255})
+  image : string;
+
+  @ManyToOne(() => User, (user) => user.playlists)
+  user: User;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
@@ -27,10 +32,4 @@ export class User extends BaseEntity {
 
   @DeleteDateColumn({ name: 'deleted_at', nullable: true })
   deletedAt: Date;
-
-  @OneToMany(() => UserLike, (like) => like.user)
-  likedTracks: UserLike[];
-
-  @OneToMany(() => Playlists, (playlist) => playlist.user)
-  playlists: Playlists[];
 }
