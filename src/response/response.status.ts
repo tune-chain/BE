@@ -6,6 +6,18 @@ export const BaseResponse = {
         message: 'sign in success',
     },
 
+    UNLIKE_TRACK_SUCCESS :{
+        success: true,
+        code: 200,
+        message: 'track unliked',
+    },
+
+    LIKE_TRACK_SUCCESS:{
+        success: true,
+        code: 200,
+        message: 'track liked',
+    },
+
     /* 201 CREATED : 요청 성공, 자원 생성 */
     CREATE_PLAYLIST_SUCCESS :{
         success: true,
@@ -25,15 +37,42 @@ export const BaseResponse = {
     MUSIC_NOT_FOUND: {
         success: false,
         code: 404,
-        message: '음악 검색에 실패',
+        message: 'music not found',
+    },
+
+    USER_NOT_FOUND: {
+        success: false,
+        code: 404,
+        message: 'user not found',
+    },
+
+    USER_LIKE_NOT_FOUND: {
+        success: false,
+        code: 404,
+        message: 'user like not found',
     },
 
     /* 409 CONFLICT : Resource 의 현재 상태와 충돌. 보통 중복된 데이터 존재 */
+    TRACK_ALREADY_LIKED: {
+        success: false,
+        code: 409,
+        message: 'track already liked',
+    },
 
     /* 500 INTERNAL_SERVER_ERROR */
     CREATE_PLAYLIST_FAILED: {
         success: false,
         code: 500,
         message: '플레이리스트 생성에 실패',
+    },
+    TRACK_LIKE_FAILED: {
+        success: false,
+        code: 500,
+        message: 'track like failed',
+    },
+    TRACK_UNLIKE_FAILED: {
+        success: false,
+        code: 500,
+        message: 'track unlike failed',
     },
 }
