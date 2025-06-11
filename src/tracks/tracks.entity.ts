@@ -1,3 +1,4 @@
+import { PlaylistTrack } from 'src/playlists/playlistTrack.entity';
 import { UserLike } from 'src/user-like/user-like.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
@@ -65,4 +66,7 @@ export class Tracks {
 
   @OneToMany(() => UserLike, (like) => like.track)
    likes: UserLike[];
+
+  @OneToMany(() => PlaylistTrack, (playlistTrack) => playlistTrack.track)
+  playlistTracks: PlaylistTrack[];
 }

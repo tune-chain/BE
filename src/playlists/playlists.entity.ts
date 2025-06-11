@@ -8,7 +8,9 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     ManyToOne,
+    OneToMany,
   } from 'typeorm';
+import { PlaylistTrack } from './playlistTrack.entity';
 
 @Entity('playlists')
 export class Playlists extends BaseEntity {
@@ -18,11 +20,16 @@ export class Playlists extends BaseEntity {
   @Column({ type: 'varchar', length: 255})
   name : string;
 
-  @Column({ type: 'varchar', length: 255})
-  image : string;
+  @Column({ type: 'text', nullable: true })
+  image: string;
 
   @ManyToOne(() => User, (user) => user.playlists)
   user: User;
+
+  @OneToMany(() => PlaylistTrack, (playlistTrack) => playlistTrack.playlist, {
+    cascade: true,
+  })
+  playlistTracks: PlaylistTrack[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
