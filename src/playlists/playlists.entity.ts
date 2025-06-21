@@ -10,7 +10,7 @@ import {
     ManyToOne,
     OneToMany,
   } from 'typeorm';
-import { PlaylistTrack } from './playlistTrack.entity';
+import { PlaylistTrack } from '../playlist-track/playlistTrack.entity';
 
 @Entity('playlists')
 export class Playlists extends BaseEntity {

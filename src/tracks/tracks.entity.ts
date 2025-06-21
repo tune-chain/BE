@@ -1,4 +1,4 @@
-import { PlaylistTrack } from 'src/playlists/playlistTrack.entity';
+import { PlaylistTrack } from 'src/playlist-track/playlistTrack.entity';
 import { UserLike } from 'src/user-like/user-like.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 

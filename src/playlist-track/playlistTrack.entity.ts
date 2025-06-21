@@ -4,10 +4,10 @@ import {
   ManyToOne,
   Column,
 } from 'typeorm';
-import { Playlists } from './playlists.entity';
+import { Playlists } from '../playlists/playlists.entity';
 import { Tracks } from 'src/tracks/tracks.entity';
 
-@Entity('playlist-tracks')
+@Entity('playlist-track')
 export class PlaylistTrack {
   @PrimaryGeneratedColumn()
   id: number;
