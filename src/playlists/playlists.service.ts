@@ -9,6 +9,8 @@ import { TrackRepository } from "src/tracks/track.repository";
 import { PlaylistTrackRepository } from "src/playlist-track/playlistTrack.repository";
 import { Playlists } from "./playlists.entity";
 import { Tracks } from "src/tracks/tracks.entity";
+import { PlaylistResponseDto } from "./dtos/playlist-response.dto";
+import { PlaylistTrackResponseDto } from "./dtos/playlist-track-response.dto";
 
 @Injectable()
 export class PlaylistsService{
@@ -42,10 +44,10 @@ export class PlaylistsService{
 
     async getPlaylists(cursorPageOptionsDto : CursorPageOptionsDto){
         const{cursor, limit = 10} = cursorPageOptionsDto;
-        const items = await this.playlistsRepository.findWithCursor(cursor, limit);
-        const hasNext = items.length > limit;
+        const playlists = await this.playlistsRepository.findWithCursor(cursor, limit);
+        const hasNext = playlists.length > limit;
 
-        const data = (hasNext ? items.slice(0, limit) : items).map((playlist) => ({
+        const data = (hasNext ? playlists.slice(0, limit) : playlists).map((playlist) => ({
             id: playlist.id,
             name: playlist.name,
             image: playlist.image,
@@ -60,6 +62,30 @@ export class PlaylistsService{
             hasNext,
         };
         
+    }
+
+    async getTracksInPlaylist(playlistId:number, cursorPageOptionsDto : CursorPageOptionsDto) {
+        const {cursor , limit = 10} = cursorPageOptionsDto;
+        const tracks = await this.playlistTrackRepository.findTracksInPlaylistWithCursor(
+            playlistId,
+            cursor,
+            limit
+        );
+        const hasNext = tracks.length > limit;
+        const data = (hasNext ? tracks.slice(0, limit) : tracks).map((playlist)=>({
+            id : playlist.track.id,
+            name : playlist.track.track_name,
+            artist : playlist.track.artist,
+            image : playlist.track.image
+        }));
+
+        const nextCursor = hasNext ? data[data.length - 1].id : null;
+
+        return {
+            data,
+            nextCursor,
+            hasNext,
+        };
     }
 
     private async findUserByAddress (walletAddress : string): Promise<User> {
