@@ -1,3 +1,4 @@
+import { Playlists } from 'src/playlists/playlists.entity';
 import { UserLike } from 'src/user-like/user-like.entity';
 import {
     BaseEntity,
@@ -29,4 +30,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => UserLike, (like) => like.user)
   likedTracks: UserLike[];
+
+  @OneToMany(() => Playlists, (playlist) => playlist.user)
+  playlists: Playlists[];
 }
